@@ -3363,7 +3363,7 @@ def bot(op):
                             kt.updateProfilePicture(p)
                             kt.sendText(msg.to, "Succes")
                         except Exception as e:
-                            kt.sendText(msg.to,"Gagagl!")
+                            kt.sendText(msg.to,"Gagal!")
                             print e
 #=================================================
             elif msg.text == "Setpoint":
@@ -3684,7 +3684,7 @@ def bot(op):
             elif 'Video ' in msg.text:
 	      if msg.from_ in admin:
                 try:
-                    textToSearch = (msg.text).replace('Vidio ', "").strip()
+                    textToSearch = (msg.text).replace('Video ', "").strip()
                     query = urllib.quote(textToSearch)
                     url = "https://www.youtube.com/results?search_query=" + query
                     response = urllib2.urlopen(url)
