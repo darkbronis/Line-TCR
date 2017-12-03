@@ -3895,7 +3895,7 @@ def bot(op):
                     cl.sendText(msg.to,"blacklist user list")
                     mc = "[⎈]Blacklist User[⎈]\n"
                     for mi_d in wait["blacklist"]:
-                        mc += "●▬▬ Daftar Banned ▬▬●\n " "☞" + cl.getContact(mi_d).displayName + " \n"
+                        mc += "☞ " + cl.getContact(mi_d).displayName + " \n"
                     cl.sendText(msg.to, mc + "")
            
             
