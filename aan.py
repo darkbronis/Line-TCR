@@ -2999,6 +2999,32 @@ def bot(op):
                     cl.sendText(msg.to,"Please turn on the name clock")
 
 #========================================
+
+            elif "Steal dp @" in msg.text: 
+	      if msg.from_ in admin:
+                print "[Command]dp executing"
+                _name = msg.text.replace("Steal dp @","")
+                _nametarget = _name.rstrip('  ')
+                gs = cl.getGroup(msg.to)
+                targets = []
+                for g in gs.members:
+                    if _nametarget == g.displayName:
+                        targets.append(g.mid)
+                if targets == []:
+                    ki.sendText(msg.to,"Contact not found")
+                else:
+                    for target in targets:
+                        try:
+                            contact = cl.getContact(target)
+                            path = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
+                            cl.sendImageWithURL(msg.to, path)
+                        except:
+                            pass
+		print "[Command]dp executed"
+
+
+
+
             elif "Steal cover @" in msg.text:
               if msg.from_ in admin:            
                 print "[Command]dp executing"
@@ -3021,6 +3047,48 @@ def bot(op):
                         except:
                             pass
                 print "[Command]dp executed"
+		
+		elif msg.text in ["Keluar","out"]:
+				if msg.from_ in admin:
+					if msg.toType == 2:
+						ginfo = cl.getGroup(msg.to)
+						try:
+							cl.leaveGroup(msg.to)
+						except:
+							pass
+						
+            elif " love " in msg.text:
+                tanya = msg.text.replace(" love ","")
+                jawab = ("10%\n Ga cocok banget oy, lu jelek","20%\n Cari yang lain aja","30%\n Kurang cocok, yang ada sering tengkar","40%\n hmmm,,Yah bisa dibilang ga cocok ","50%\n Sedang sedang, Yang penting kamu berusaha jadi yg terbaik","60%\n Lumayan Cocok","70%\n Bagus,kecocokannya lumayan bagus","80%\n kecocokannya sangat bagus","90%\n Wah, sangat cocok mungkin dia jodoh kamu","100%\n Apalagi yang ditunggu? Halalin dia buruan","0%\nDia ga ada rasa sama lo")
+                jawaban = random.choice(jawab)
+		cl.sendText(msg.to,jawaban)
+		
+		
+		
+            elif "Steal home @" in msg.text: 
+	      if msg.from_ in admin:
+                print "[Command]dp executing"
+                _name = msg.text.replace("Steal home @","")
+                _nametarget = _name.rstrip('  ')
+                gs = cl.getGroup(msg.to)
+                targets = []
+                for g in gs.members:
+                    if _nametarget == g.displayName:
+                        targets.append(g.mid)
+                if targets == []:
+                    ki.sendText(msg.to,"Contact not found")
+                else:
+                    for target in targets:
+                        try:
+                            contact = cl.getContact(target)
+                            cu = cl.channel.getCover(target)
+                            path = str(cu)
+                            cl.sendImageWithURL(msg.to, path)
+                        except:
+                            pass
+		print "[Command]dp executed"	
+		
+		
             elif "Midpict:" in msg.text:
               if msg.from_ in admin:
                 umid = msg.text.replace("Midpict:","")
@@ -3034,40 +3102,7 @@ def bot(op):
                 except Exception as error:
                     cl.sendText(msg.to,(error))
                     pass
-            elif "Steal pict " in msg.text:
-              if msg.from_ in admin:
-                if msg.toType == 2:
-                    msg.contentType = 0
-                    steal0 = msg.text.replace("Steal pict ","")
-                    steal1 = steal0.lstrip()
-                    steal2 = steal1.replace("@","")
-                    steal3 = steal2.rstrip()
-                    _name = steal3
-                    group = cl.getGroup(msg.to)
-                    targets = []
-                    for g in group.members:
-                        if _name == g.displayName:
-                            targets.append(g.mid)
-                    if targets == []:
-                        cl.sendText(msg.to,"not found")
-                    else:
-                        for target in targets:
-                            try:
-                                contact = cl.getContact(target)
-                                try:
-                                    image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                                except:
-                                    image = "https://www.1and1.co.uk/digitalguide/fileadmin/DigitalGuide/Teaser/not-found-t.jpg"
-                                try:
-                                    cl.sendImageWithURL(msg.to,image)
-                                except Exception as error:
-                                    cl.sendText(msg.to,(error))
-                                    pass
-                            except:
-                                cl.sendText(msg.to,"Error!")
-                                break
-                else:
-                    cl.sendText(msg.to,"Tidak bisa dilakukan di luar grup")
+           
             elif "copy @" in msg.text:
 		if msg.from_ in admin:
                    print "[COPY] Ok"
@@ -3977,7 +4012,7 @@ def bot(op):
     		tanya = msg.text.replace("Siapa ","")
     		jawab = ("Oh dia yang anak hasil dari nafsu bejat, jeahaha"," Dia si maho itu","Dia om pedo","Gue aja ga kenal","Oh yang idiot itu")
     		jawaban = random.choice(jawab)
-		tts = gTTS(text=jawaban, lang='en')
+		tts = gTTS(text=jawaban, lang='id')
 		tts.save('tts.mp3')
     		ki.sendAudio(msg.to,'tts.mp3')
 #==========================================
@@ -4006,49 +4041,7 @@ def bot(op):
                 t1 = "\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xa0\x81\xf4\x80\xa0\x81\xf4\x80\xa0\x81"
                 t2 = "\xf4\x80\x82\xb3\xf4\x8f\xbf\xbf"
                 cl.sendText(msg.to, t1 + txt + t2)
-#-------Cek sider biar mirip kek siri-----------------------------
-            elif "Setlastpoint" in msg.text:
-	      if msg.from_ in admin:
-                subprocess.Popen("echo '' > dataSeen/"+msg.to+".txt", shell=True, stdout=subprocess.PIPE)
-                #cl.sendText(msg.to, "Checkpoint checked!")
-                cl.sendText(msg.to, "Set the lastseens' point(｀・ω・´)\n\n" + datetime.now().strftime('%H:%M:%S'))
-                print "Setlastpoint"
 #--------------------------------------------
-            elif "Viewlastseen" in msg.text:
-	      if msg.from_ in admin:
-	        lurkGroup = ""
-	        dataResult, timeSeen, contacts, userList, timelist, recheckData = [], [], [], [], [], []
-                with open('dataSeen/'+msg.to+'.txt','r') as rr:
-                    contactArr = rr.readlines()
-                    for v in xrange(len(contactArr) -1,0,-1):
-                        num = re.sub(r'\n', "", contactArr[v])
-                        contacts.append(num)
-                        pass
-                    contacts = list(set(contacts))
-                    for z in range(len(contacts)):
-                        arg = contacts[z].split('|')
-                        userList.append(arg[0])
-                        timelist.append(arg[1])
-                    uL = list(set(userList))
-                    for ll in range(len(uL)):
-                        try:
-                            getIndexUser = userList.index(uL[ll])
-                            timeSeen.append(time.strftime("%d日 %H:%M:%S", time.localtime(int(timelist[getIndexUser]) / 1000)))
-                            recheckData.append(userList[getIndexUser])
-                        except IndexError:
-                            conName.append('nones')
-                            pass
-                    contactId = cl.getContacts(recheckData)
-                    for v in range(len(recheckData)):
-                        dataResult.append(contactId[v].displayName + ' ('+timeSeen[v]+')')
-                        pass
-                    if len(dataResult) > 0:
-                        grp = '\n• '.join(str(f) for f in dataResult)
-                        total = '\nThese %iusers have seen at the lastseen\npoint(｀・ω・´)\n\n%s' % (len(dataResult), datetime.now().strftime('%H:%M:%S') )
-                        cl.sendText(msg.to, "• %s %s" % (grp, total))
-                    else:
-                        cl.sendText(msg.to, "ketik Setlastpoint\nUntuk melihat sider ketik\nViewlastseen")
-                    print "Viewlastseen"
 #==========================================
             elif msg.text in ["Purge"]:
               if msg.from_ in admin:
