@@ -99,10 +99,10 @@ helpMessage= """●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n♞♞♞Ɇs�
 ☯ STEALING ☯
 ➤ Steal name    @[name]
 ➤ Steal Bio     @[name]
-➤ Steal status  @[name]
 ➤ Steal mid     @[name]
 ➤ Steal contact @[name]
-➤ Steal cover   @[name]
+➤ Steal home   @[name]
+➤ Steal dp   @[name]
 ➤ Steal group pict
 ➤ Midpict:[mid]
 ➤ Copy @[name]
@@ -3047,15 +3047,7 @@ def bot(op):
                         except:
                             pass
                 print "[Command]dp executed"
-		
-		elif msg.text in ["Keluar","out"]:
-				if msg.from_ in admin:
-					if msg.toType == 2:
-						ginfo = cl.getGroup(msg.to)
-						try:
-							cl.leaveGroup(msg.to)
-						except:
-							pass
+#==================================================================
 						
             elif " love " in msg.text:
                 tanya = msg.text.replace(" love ","")
