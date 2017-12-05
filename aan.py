@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Aan Team Bot
+#Espada Team bot
 
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
@@ -3171,6 +3171,10 @@ def bot(op):
 		kc.sendText(msg.to, "%sseconds" % (elapsed_time))
 		ks.sendText(msg.to, "%sseconds" % (elapsed_time))
 		kt.sendText(msg.to, "%sseconds" % (elapsed_time))
+		zm.sendText(msg.to, "%sseconds" % (elapsed_time))
+		sz.sendText(msg.to, "%sseconds" % (elapsed_time))
+		ar.sendText(msg.to, "%sseconds" % (elapsed_time))
+		ya.sendText(msg.to, "%sseconds" % (elapsed_time))
 #========================================
             elif msg.text in ["No1 backup run"]:
                 if msg.from_ in admin:
