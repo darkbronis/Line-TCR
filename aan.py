@@ -3823,7 +3823,7 @@ def bot(op):
                 tanya = msg.text.replace("Dosa @","")
                 jawab = ("60%","70%","80%","90%","100%","Tak terhingga")
                 jawaban = random.choice(jawab)
-                tts = gTTS(text=jawaban, lang='en')
+                tts = gTTS(text=jawaban, lang='id')
                 tts.save('tts.mp3')
                 cl.sendText(msg.to,"Dosanya adalah cek voice ini")
                 cl.sendAudio(msg.to,'tts.mp3')
@@ -3839,6 +3839,7 @@ def bot(op):
                     pass
 #==========================================
             elif "kedapkedip " in msg.text.lower():
+	      if msg.from_ in admin:
                 txt = msg.text.replace("kedapkedip ", "")
                 t1 = "\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xa0\x81\xf4\x80\xa0\x81\xf4\x80\xa0\x81"
                 t2 = "\xf4\x80\x82\xb3\xf4\x8f\xbf\xbf"
