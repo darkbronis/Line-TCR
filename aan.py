@@ -73,18 +73,9 @@ helpMessage= """●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n♞♞♞Ɇs�
 ➤ No8 rename:[text]
 ➤ No9 rename:[text]
 ➤ No10 rename:[text]
+➤ No1 clone @[name]
 ➤ All rename:[text]
 ➤ Allbio:[text]
-➤ No1 clone @[name]
-➤ No2 clone @[name]
-➤ No3 clone @[name]
-➤ No4 clone @[name]
-➤ No5 clone @[name]
-➤ No6 clone @[name]
-➤ No7 rename:[text]
-➤ No8 rename:[text]
-➤ No9 rename:[text]
-➤ No10 rename:[text]
 ➤ Comment:[text]
 ➤ Message:[text]
 ➤ Bot1-10 backup run
@@ -139,7 +130,7 @@ helpMessage= """●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n♞♞♞Ɇs�
 ➤ No5   @bye
 ➤ No6   @bye
 ➤ Team   @bye
-➤ Center @bye
+➤ No1	 @bye
 ➤ Bye allgroups[own]
 
      ☯ BOT AUTO SETTINGS ☯
@@ -244,7 +235,7 @@ helpMessage= """●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n♞♞♞Ɇs�
 ➤ /say-en
 ➤ /say-jp
 ➤ Dosa @
-➤ /
+➤ kedapkedip [Text]
 ➤ Siapa
 
      ★ BROADCASTING ★
@@ -341,59 +332,7 @@ backup.displayName = contact.displayName
 backup.statusMessage = contact.statusMessage
 backup.pictureStatus = contact.pictureStatus
 
-contact = ki.getProfile()
-backup = ki.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
 
-contact = kk.getProfile()
-backup = kk.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
-
-contact = kc.getProfile()
-backup = kc.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
-
-contact = ks.getProfile()
-backup = ks.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
-
-contact = kt.getProfile()
-backup = kt.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
-
-contact = zm.getProfile()
-backup = zm.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
-
-contact = sz.getProfile()
-backup = sz.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
-
-contact = ar.getProfile()
-backup = ar.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
-
-contact = ya.getProfile()
-backup = ya.getProfile()
-backup.displayName = contact.displayName
-backup.statusMessage = contact.statusMessage
-backup.pictureStatus = contact.pictureStatus
 
 def upload_tempimage(client):
      '''
@@ -3508,136 +3447,7 @@ def bot(op):
                         except Exception as e:
                             cl.sendText(msg.to,"Gagal!")
                             print e
-            elif "No2 backup" in msg.text:
-                 if msg.from_ in admin:
-                        try:
-                            h = open('mgydn.txt',"r")
-                            name = h.read()
-                            h.close()
-                            x = name
-                            profile = kt.getProfile()
-                            profile.displayName = x
-                            kt.updateProfile(profile)
-                            i = open('myesm.txt',"r")
-                            sm = i.read()
-                            i.close()
-                            y = sm
-                            cak = kt.getProfile()
-                            cak.statusMessage = y
-                            kt.updateProfile(cak)
-                            j = open('mypfs.txt',"r")
-                            ps = j.read()
-                            j.close()
-                            p = ps
-                            kt.updateProfilePicture(p)
-                            kt.sendText(msg.to, "Success")
-                        except Exception as e:
-                            kt.sendText(msg.to,"Gagal!")
-                            print e
-            elif "No3 backup" in msg.text:
-                if msg.from_ in admin:
-                        try:
-                            h = open('msgydn.txt',"r")
-                            name = h.read()
-                            h.close()
-                            x = name
-                            profile = ks.getProfile()
-                            profile.displayName = x
-                            ks.updateProfile(profile)
-                            i = open('mysfdgm.txt',"r")
-                            sm = i.read()
-                            i.close()
-                            y = sm
-                            cak = ks.getProfile()
-                            cak.statusMessage = y
-                            ks.updateProfile(cak)
-                            j = open('gymyps.txt',"r")
-                            ps = j.read()
-                            j.close()
-                            p = ps
-                            ks.updateProfilePicture(p)
-                            ks.sendText(msg.to, "Success")
-                        except Exception as e:
-                            ks.sendText(msg.to,"Gagal!")
-                            print e
-            elif "No4 backup" in msg.text:
-                if msg.from_ in admin:
-                        try:
-                            h = open('jhmydn.txt',"r")
-                            name = h.read()
-                            h.close()
-                            x = name
-                            profile = ki.getProfile()
-                            profile.displayName = x
-                            ki.updateProfile(profile)
-                            i = open('myhfsm.txt',"r")
-                            sm = i.read()
-                            i.close()
-                            y = sm
-                            cak = ki.getProfile()
-                            cak.statusMessage = y
-                            ki.updateProfile(cak)
-                            j = open('mypfhs.txt',"r")
-                            ps = j.read()
-                            j.close()
-                            p = ps
-                            ki.updateProfilePicture(p)
-                            ki.sendText(msg.to, "Succes")
-                        except Exception as e:
-                            ki.sendText(msg.to,"Gagagl!")
-                            print e
-            elif "No5 backup" in msg.text:
-                if msg.from_ in admin:
-                        try:
-                            h = open('madydn.txt',"r")
-                            name = h.read()
-                            h.close()
-                            x = name
-                            profile = kk.getProfile()
-                            profile.displayName = x
-                            kk.updateProfile(profile)
-                            i = open('mysgjm.txt',"r")
-                            sm = i.read()
-                            i.close()
-                            y = sm
-                            cak = kk.getProfile()
-                            cak.statusMessage = y
-                            kk.updateProfile(cak)
-                            j = open('myrdps.txt',"r")
-                            ps = j.read()
-                            j.close()
-                            p = ps
-                            kk.updateProfilePicture(p)
-                            kk.sendText(msg.to, "Success")
-                        except Exception as e:
-                            kk.sendText(msg.to,"Gagal!")
-                            print e
-            elif "No6 backup" in msg.text:
-                if msg.from_ in admin:
-                        try:
-                            h = open('mydnsgv.txt',"r")
-                            name = h.read()
-                            h.close()
-                            x = name
-                            profile = kc.getProfile()
-                            profile.displayName = x
-                            kc.updateProfile(profile)
-                            i = open('jhmysm.txt',"r")
-                            sm = i.read()
-                            i.close()
-                            y = sm
-                            cak = kc.getProfile()
-                            cak.statusMessage = y
-                            kc.updateProfile(cak)
-                            j = open('myiyps.txt',"r")
-                            ps = j.read()
-                            j.close()
-                            p = ps
-                            kc.updateProfilePicture(p)
-                            kc.sendText(msg.to, "Success")
-                        except Exception as e:
-                            kc.sendText(msg.to,"Gagal!")
-                            print e
+           
 #=================================================
             elif msg.text == "Setpoint":
               if msg.from_ in admin:
@@ -4028,7 +3838,7 @@ def bot(op):
                 except:
                     pass
 #==========================================
-            elif "/ " in msg.text.lower():
+            elif "kedapkedip " in msg.text.lower():
                 txt = msg.text.replace("kedapkedip ", "")
                 t1 = "\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xb0\x82\xf4\x80\xa0\x81\xf4\x80\xa0\x81\xf4\x80\xa0\x81"
                 t2 = "\xf4\x80\x82\xb3\xf4\x8f\xbf\xbf"
