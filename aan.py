@@ -349,7 +349,9 @@ def upload_tempimage(client):
      image = client.upload_from_path(image_path, config=config, anon=False)
      print("Done")
      print()
-
+	
+     return image
+	
 def restart_program():
     python = sys.executable
     os.execl(python, python, * sys.argv)
