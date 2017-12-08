@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
-import requests,shutil,random,string,json,tempfile,goslate,urllib3,os,urllib,subprocess,threading,sys,codecs
-import unicodedata
-from bs4 import BeautifulSoup
-from random import randint
 from Api import Poll, Talk, channel
-from time import time
-from datetime import datetime
 from lib.curve.ttypes import *
-from threading import Thread
-
+from random import randint
+import requests,tempfile
+import shutil
+import json
 
 def def_callback(str):
     print(str)
