@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 from Api import Poll, Talk, channel
 from lib.curve.ttypes import *
-from random import randint
-import requests,tempfile
+import requests
 import shutil
 import json
+import subprocess
+from random import randint
+from gtts import gTTS
+from bs4 import BeautifulSoup
 
 def def_callback(str):
     print(str)
