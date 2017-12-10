@@ -83,8 +83,8 @@ helpMessage= """●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n♞♞♞Ɇs�
 ➤ Group name:[text]
 
      ☯ ADD ADMIN LIST ☯
-● Admin on @[name]
-● Remove on @[name]
+● Admin add @[name]
+● Remove admin @[name]
 ● Expelall
 
 ☯ STEALING ☯
@@ -100,7 +100,9 @@ helpMessage= """●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n♞♞♞Ɇs�
 ➤ Kembali ke asli
 
      ☯ PROTECTION MODE ☯
-➤ Bankai:on
+➤ Shikai:on -> For Cancel invitation
+➤ Shikai:off
+➤ Bankai:on -> For Protect group
 ➤ Bankai:off
 
      ☯ MARK TO LIST ☯
@@ -269,7 +271,7 @@ autoinvite = []
 autoleaveroom = []
 targets = []
 Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid]
-admin = ["ufdb348d53532a57228f045ecfaa00f8d","u0db0acb862af364edda273a975ee589b","u3c239a612e44e23e5ba887045dbbaa60","ubbc139cd574b65ec09610bf0f7cedfb1","u3e7a636610c82444e42a77384887441a","uf53069091adb4bad3b31bc516daa1086"]
+admin = ["ufdb348d53532a57228f045ecfaa00f8d","u0db0acb862af364edda273a975ee589b"]
 owner = ["ufdb348d53532a57228f045ecfaa00f8d"]
 wait = {
     'contact':False,
@@ -298,6 +300,7 @@ wait = {
     "welcomemsg":False,
     "Backup":False,
     "protectionOn":False,
+    "Protectcancel":False,
     "winvite":False,
     "pnharfbot":{},
     "pname":{},
@@ -1131,51 +1134,66 @@ def bot(op):
 		
                 if op.param3 in Emid:
                     if op.param2 in Gmid:
-                        G = zm.getGroup(op.param1) 
-                        G.preventJoinByTicket = False
-                        zm.updateGroup(G)
-                        Ticket = zm.reissueGroupTicket(op.param1)
-                        kk.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        zm.updateGroup(G)
-                        Ticket = zm.reissueGroupTicket(op.param1)
-		
-                if op.param3 in Bmid:
-                    if op.param2 in Gmid:
                         G = sz.getGroup(op.param1) 
                         G.preventJoinByTicket = False
                         sz.updateGroup(G)
                         Ticket = sz.reissueGroupTicket(op.param1)
-                        kk.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        kt.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         sz.updateGroup(G)
                         Ticket = sz.reissueGroupTicket(op.param1)
-			
-                if op.param3 in Bmid:
+		
+                if op.param3 in Emid:
                     if op.param2 in Hmid:
                         G = ar.getGroup(op.param1) 
                         G.preventJoinByTicket = False
                         ar.updateGroup(G)
                         Ticket = ar.reissueGroupTicket(op.param1)
-                        kk.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        kt.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         ar.updateGroup(G)
                         Ticket = ar.reissueGroupTicket(op.param1)
 			
-                if op.param3 in Bmid:
+                if op.param3 in Emid:
                     if op.param2 in Imid:
                         G = ya.getGroup(op.param1) 
                         G.preventJoinByTicket = False
                         ya.updateGroup(G)
                         Ticket = ya.reissueGroupTicket(op.param1)
-                        kk.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        kt.acceptGroupInvitationByTicket(op.param1,Ticket)
                         G.preventJoinByTicket = True
                         ya.updateGroup(G)
-                        Ticket = ya.reissueGroupTicket(op.param1)        
+                        Ticket = ya.reissueGroupTicket(op.param1)
+#=============		CANCEL PROTECT  ==========================================================================
+	if op.type == 13:
+           if wait["Protectcancel"] == True:
+               if op.param2 not in Bots and admin:
+                  group = cl.getGroup(op.param1)
+                  gMembMids = [contact.mid for contact in group.invitee]
+		  random.choice(KAC).cancelGroupInvitation(op.param1, gMembMids)
 	
+	
+	if op.type == 13:
+           if wait["Protectcancel"] == True:
+               if op.param2 not in owner:
+                  group = kt.getGroup(op.param1)
+                  gMembMids = [contact.mid for contact in group.invitee]
+		  random.choice(KAC).cancelGroupInvitation(op.param1, gMembMids)
 #===========================================
         if op.type == 32:
             if not op.param2 in Bots and admin:
+                if wait["protectionOn"] == True: 
+                    try:
+                        klist=[ki,kk,kc,ks,kt,zm,sz,ar,ya]
+                        kicker = random.choice(klist) 
+                        G = kicker.getGroup(op.param1)
+                        kicker.kickoutFromGroup(op.param1,[op.param2])
+                        kicker.inviteIntoGroup(op.param1, [op.param3])
+                    except Exception, e:
+                       print e
+		
+	if op.type == 32:
+            if not op.param2 in owner:
                 if wait["protectionOn"] == True: 
                     try:
                         klist=[ki,kk,kc,ks,kt,zm,sz,ar,ya]
@@ -1322,6 +1340,27 @@ def bot(op):
 
                  except Exception, e:
                            print e
+				
+	if op.type == 11:
+            if not op.param2 in owner:
+              if wait["protectionOn"] == True:
+                 try:                    
+                    klist=[ki,kk,kc,ks,kt,zm,sz,ar,ya]
+                    kicker = random.choice(klist) 
+                    G = kicker.getGroup(op.param1)
+                    G.preventJoinByTicket = True
+                    kicker.updateGroup(G)
+                    kicker.kickoutFromGroup(op.param1,[op.param2])
+                    G.preventJoinByTicket = True
+                    kicker.updateGroup(G)
+                    cl.sendText(op.param1,"Jangan buka link grup")
+                    c = Message(to=op.param1, from_=None, text=None, contentType=13)
+                    c.contentMetadata={'mid':op.param2}
+                    cl.sendMessage(c)
+
+                 except Exception, e:
+                           print e
+				
         if op.type == 13:
             G = cl.getGroup(op.param1)
             I = G.creator
@@ -1338,13 +1377,34 @@ def bot(op):
                         c = Message(to=op.param1, from_=None, text=None, contentType=13)
                         c.contentMetadata={'mid':op.param2}
                         cl.sendMessage(c)
+			
+	if op.type == 13:
+            G = cl.getGroup(op.param1)
+            I = G.creator
+            if not op.param2 in owner:
+                if wait["protectionOn"] == True:  
+                    klist=[ki,kk,kc,ks,kt,zm,sz,ar,ya]
+                    kicker = random.choice(klist)
+                    G = kicker.getGroup(op.param1)
+                    if G is not None:
+                        gInviMids = [contact.mid for contact in G.invitee]
+                        kicker.cancelGroupInvitation(op.param1, gInviMids)
+                        kicker.kickoutFromGroup(op.param1,[op.param2])
+                        cl.sendText(op.param1,"you are prohibited from inviting-_-")
+                        c = Message(to=op.param1, from_=None, text=None, contentType=13)
+                        c.contentMetadata={'mid':op.param2}
+                        cl.sendMessage(c)
+			
+			
         if op.type == 15:
-             if op.param2 in admin:
+             if op.param2 in admin and owner:
                 random.choice(KAC).inviteIntoGroup(op.param1,[op.param2])
+		
         if op.type == 19:
              if op.param2 in Bots:
-                   if op.param3 in admin:
+                   if op.param3 in admin and owner:
                       random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
+		
         if op.type == 19:
              if not op.param2 in Bots:
                    if op.param3 in admin:
@@ -2720,6 +2780,34 @@ def bot(op):
 					cl.sendText(msg.to,"Protect Invitation Off")
 				except:
 					pass
+#=========================================================================================				
+	elif msg.text in ["Shikai:on","shikai:on"]:
+              if msg.from_ in admin:
+                if wait["Protectcancel"] == True:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Shikai mode diaktifkan")
+                    else:
+                        cl.sendText(msg.to,"done")
+                else:
+                    wait["Protectcancel"] = True
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Shikai mode diaktifkan")
+                    else:
+			cl.sendText(msg.to,"done")
+			
+	elif msg.text in ["Shikai:off","shikai:off"]:
+              if msg.from_ in admin:
+                if wait["Protectcancel"] == False:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Shikai mode dinonaktifkan")
+                    else:
+                        cl.sendText(msg.to,"done")
+                else:
+                    wait["Protectcancel"] = False
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Shikai mode dinonaktifkan")
+                    else:
+			cl.sendText(msg.to,"done")
  #================================================================           
             elif msg.text in ["Invite user"]:
               if msg.from_ in admin:
