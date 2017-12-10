@@ -299,8 +299,8 @@ wait = {
     "qr":True,
     "welcomemsg":False,
     "Backup":False,
-    "protectionOn":False,
     "Protectcancel":False,
+    "protectionOn":False,
     "winvite":False,
     "pnharfbot":{},
     "pname":{},
@@ -2781,7 +2781,7 @@ def bot(op):
 				except:
 					pass
 #=========================================================================================				
-	elif msg.text in ["Shikai:on","shikai:on"]:
+	    elif msg.text in ["Shikai:on","shikai:on"]:
               if msg.from_ in admin:
                 if wait["Protectcancel"] == True:
                     if wait["lang"] == "JP":
@@ -2795,7 +2795,7 @@ def bot(op):
                     else:
 			cl.sendText(msg.to,"done")
 			
-	elif msg.text in ["Shikai:off","shikai:off"]:
+	    elif msg.text in ["Shikai:off","shikai:off"]:
               if msg.from_ in admin:
                 if wait["Protectcancel"] == False:
                     if wait["lang"] == "JP":
@@ -2814,10 +2814,6 @@ def bot(op):
                  wait["winvite"] = True
                  cl.sendText(msg.to,"send contact")
 		
-	    elif msg.text in ["No2 invite"]:
-              if msg.from_ in admin:
-                 wait["winvite"] = True
-                 kt.sendText(msg.to,"send contact")
 #============================================================
             elif "Steal mid" in msg.text:
               if msg.from_ in admin:
