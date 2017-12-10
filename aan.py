@@ -269,7 +269,7 @@ autoinvite = []
 autoleaveroom = []
 targets = []
 Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid]
-admin = ["ufdb348d53532a57228f045ecfaa00f8d","u3c239a612e44e23e5ba887045dbbaa60","ubbc139cd574b65ec09610bf0f7cedfb1","u3e7a636610c82444e42a77384887441a","uf53069091adb4bad3b31bc516daa1086"]
+admin = ["ufdb348d53532a57228f045ecfaa00f8d","u0db0acb862af364edda273a975ee589b","u3c239a612e44e23e5ba887045dbbaa60","ubbc139cd574b65ec09610bf0f7cedfb1","u3e7a636610c82444e42a77384887441a","uf53069091adb4bad3b31bc516daa1086"]
 owner = ["ufdb348d53532a57228f045ecfaa00f8d"]
 wait = {
     'contact':False,
