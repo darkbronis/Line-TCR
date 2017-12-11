@@ -2865,7 +2865,7 @@ def bot(op):
                     for i in gid:
                         h = cl.getGroup(i).name
                 if h == ng:
-                cl.sendText(i,"Bot di paksa keluar oleh owner!")
+                cl.sendText(msg.to,"Bot di paksa keluar oleh owner!")
                 cl.leaveGroup(i)
                 ki.leaveGroup(i)
                 kk.leaveGroup(i)
