@@ -7,7 +7,6 @@ import urllib
 import urllib2
 import subprocess
 import profile
-import client
 import wikipedia
 import requests
 from gtts import gTTS
