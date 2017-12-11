@@ -11,13 +11,13 @@ import client
 import wikipedia
 import requests
 from gtts import gTTS
-from TOBY.lib.curve.ttypes import *
+from LINETCR.lib.curve.ttypes import *
 from datetime import datetime
 import time,random,sys,json,codecs,threading,glob,re
 from bs4 import BeautifulSoup
 from threading import Thread
 
-cl = TOBY.LINE() #Bot Utama
+cl = LINETCR.LINE() #Bot Utama
 cl.login(qr=True)
 cl.loginResult()
 
