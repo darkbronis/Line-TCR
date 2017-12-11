@@ -3,7 +3,9 @@
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
 from datetime import datetime
-import time,random,sys,json,codecs,threading,glob,re
+from bs4 import BeautifulSoup
+import time, random, sys, re, os, json, subprocess, threading, string, codecs, requests, tweepy, ctypes, urllib, urllib2, wikipedia,tempfile,glob,shutil,unicodedata,goslate
+from gtts import gTTS
 
 #kk = LINETCR.LINE()
 #kk.login(qr=True)
@@ -46,8 +48,6 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 helpMessage ="""●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n ♞♞♞ɆsᵽȺđȺ ŦɇȺm♞♞♞\n●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●
-
-☯Command Bot (admin only)☯
 ➤[Me]		Cek Akun Sendiri
 ➤[My mid]       Cek Akun Mid
 ➤[Bot?]         Cek Akun Bot
@@ -89,7 +89,7 @@ Setgroup ="""●▬▬▬〆Status bot〆▬▬▬●
 ♖  Joinn on/off
 """
 KAC=[cl,ki,kk,kc,ks,ka,kb,ko,ke,ku]
-DEF=[ka,kb,ko,ke,ku]
+DEF=[ka,kb,ko,ke,ku,ki,kk,kc,ks]
 mid = cl.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
@@ -101,7 +101,8 @@ Gmid = ko.getProfile().mid
 Hmid = ke.getProfile().mid
 Imid = ku.getProfile().mid
 
-Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,"ufdb348d53532a57228f045ecfaa00f8d","ue5060e54a4ed380dcafd0a2213592ad0","ua044c625da53442ff1040e30bfb1ee28","u93c7c5d46bc99b92c09faede05b7e8b6","u6660a5ab23e58650e107243d706ae727","ua7ab78360d15bb06bd61f4311ffc078d","u0db0acb862af364edda273a975ee589b","u0d3300929098eab5efb923ac32f8f7e3","u3c239a612e44e23e5ba887045dbbaa60","ubbc139cd574b65ec09610bf0f7cedfb1","u3e7a636610c82444e42a77384887441a","uf53069091adb4bad3b31bc516daa1086"]
+targets = []
+Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,"ufdb348d53532a57228f045ecfaa00f8d"]
 admin=["ufdb348d53532a57228f045ecfaa00f8d"]
 wait = {
     'contact':False,
@@ -112,29 +113,23 @@ wait = {
     'autoAdd':False,
     'message':"Thanks for add me\n Owner line://ti/p/~khalik02",
     "lang":"JP",
-    "comment":"Thanks for add me\n Owner line://ti/p/~khalik02",
+    "comment":"Owner line://ti/p/~khalik02",
     "commentOn":False,
     "commentBlack":{},
+    "pname":False,
     "wblack":False,
     "dblack":False,
     "clock":False,
-    "cName":"",
-    "cName2":"",
-    "cName3":"",
-    "cName4":"",
-    "cName5":"",
-    "cName6":"",
-    "cName7":"",
-    "cName8":"",
-    "cName9":"",
-    "cName10":"",
     "blacklist":{},
+    "whitelist":{},
     "wblacklist":False,
     "dblacklist":False,
     "Bankaimode":False,
     "Protectjoin":False,
     "Protectcancl":False,
     "protectionOn":True,
+    "winvite":False,
+    "pname":{},
     "atjointicket":True,
     }
 
@@ -145,8 +140,27 @@ wait2 = {
     'ROM':{}
     }
 
+wait3 = {
+    "copy":False,
+    "copy2":"target",
+    "target":{}
+    }
+
+res = {
+    'num':{},
+    'us':{},
+    'au':{},
+}
+
+
 setTime = {}
 setTime = wait2['setTime']
+
+contact = cl.getProfile()
+backup = cl.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
 
 
 def sendMessage(to, text, contentMetadata={}, contentType=0):
