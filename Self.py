@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import TOBY
+import LINETCR
 import goslate
 import requests
 import urllib
@@ -269,8 +269,8 @@ Cmid = kc.getProfile().mid
 Dmid = kl.getProfile().mid
 
 Bots=[mid,Amid,Bmid,Cmid]
-admin=["ua7fb5762d5066629323d113e1266e8ca","u76afd5ee45544818f285ca2ea21eb242","u3a4ffa2e5bf130bdc4c89b0db4f772a3","u9e89034ee9d93f92a350bc813bdcc702"]
-creator=["ua7fb5762d5066629323d113e1266e8ca","u76afd5ee45544818f285ca2ea21eb242","u3a4ffa2e5bf130bdc4c89b0db4f772a3","u9e89034ee9d93f92a350bc813bdcc702"]
+admin=["ufdb348d53532a57228f045ecfaa00f8d"]
+creator=["ufdb348d53532a57228f045ecfaa00f8d"]
 wait = {
     'contact':False,
     'autoJoin':True,
@@ -2469,13 +2469,13 @@ def bot(op):
                         else:
                             cl.sendText(msg.to,"done")
 #-----------------------------------------------
-            elif "Tob say " in msg.text:
-					bctxt = msg.text.replace("/Tob say ","")
+            elif "Say teks " in msg.text:
+					bctxt = msg.text.replace("Say teks","")
 					cl.sendText(msg.to,(bctxt))
 					ki.sendText(msg.to,(bctxt))
             elif msg.text in ["/Creator"]:
 					msg.contentType = 13
-					msg.contentMetadata = {'mid': "ua7fb5762d5066629323d113e1266e8ca"}
+					msg.contentMetadata = {'mid': "ufdb348d53532a57228f045ecfaa00f8d"}
 					cl.sendText(msg.to,"MyCreator")
 					ki.sendMessage(msg)
 					msg.contentType = 13
