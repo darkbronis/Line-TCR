@@ -3311,7 +3311,7 @@ def bot(op):
 #=================================================
             elif msg.text == "Setpoint":
               if msg.from_ in admin:
-                cl.sendText(msg.to, "Set the lastseens' point(｀・ω・´)\n\n" + datetime.now().strftime('%H:%M:%S'))
+                    cl.sendText(msg.to, "Set the lastseens' point(｀・ω・´)\n\n" + datetime.now().strftime('%H:%M:%S'))
                     try:
                         del wait2['readPoint'][msg.to]
                         del wait2['readMember'][msg.to]
