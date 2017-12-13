@@ -2475,13 +2475,9 @@ def bot(op):
             elif msg.text in ["/Creator"]:
 					msg.contentType = 13
 					msg.contentMetadata = {'mid': "ufdb348d53532a57228f045ecfaa00f8d"}
-					cl.sendText(msg.to,"MyCreator")
-					ki.sendMessage(msg)
-					msg.contentType = 13
-					msg.contentMetadata = {'mid': "ua7fb5762d5066629323d113e1266e8ca"}
-					kk.sendText(msg.to,"MyCreator")
-					ki.sendText(msg.to,"DiAdd ya!!")
-					ki.sendMessage(msg)
+					cl.sendMessage(msg)
+					cl.sendText(msg.to,"My Creator Handsome ")
+					
 #-------------Fungsi Creator Finish-----------------#
             elif "Spam " in msg.text:
                 txt = msg.text.split(" ")
@@ -2890,11 +2886,11 @@ def bot(op):
                 restart_program()
                 print "@Restart"
 #-----------------------------------------
-            elif "/Copy @" in msg.text:
+            elif "Copy @" in msg.text:
                 if msg.toType == 2:
                     if msg.from_ in admin:
                         print "[COPY] Ok"
-                        _name = msg.text.replace("/Copy @","")
+                        _name = msg.text.replace("Copy @","")
                         _nametarget = _name.rstrip('  ')
                         gs = cl.getGroup(msg.to)
                         targets = []
