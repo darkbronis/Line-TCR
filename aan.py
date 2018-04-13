@@ -13,54 +13,7 @@ cl = LINETCR.LINE()
 cl.login(qr=True)
 cl.loginResult()
 
-#Barragan
-kt = LINETCR.LINE()
-kt.login(qr=True)
-kt.loginResult()
-#Tia harribel
-ks = LINETCR.LINE()
-ks.login(qr=True)
-ks.loginResult()
 
-#Ulquiorra
-ki = LINETCR.LINE()
-ki.login(qr=True)
-ki.loginResult()
-
-#Nnoitra
-kk = LINETCR.LINE()
-kk.login(qr=True)
-kk.loginResult()
-
-#Grimmjow
-kc = LINETCR.LINE()
-kc.login(qr=True)
-kc.loginResult()
-
-#Zomari
-zm = LINETCR.LINE()
-zm.login(qr=True)
-zm.loginResult()
-
-#Szayel
-sz = LINETCR.LINE()
-sz.login(qr=True)
-sz.loginResult()
-
-#Aaroniero
-ar = LINETCR.LINE()
-ar.login(qr=True)
-ar.loginResult()
-
-#Yammy
-ya = LINETCR.LINE()
-ya.login(qr=True)
-ya.loginResult()
-
-#kicker ghost
-#kl = LINETCR.LINE()
-#kl.login(token="")
-#kl.loginResult()
 
 print "login success"
 reload(sys)
@@ -1674,7 +1627,7 @@ def bot(op):
         if op.type == 24:
             if wait["leaveRoom"] == True:
                 cl.leaveRoom(op.param1)
-        if op.type == 26:
+        if op.type == 25:
             msg = op.message
             if msg.toType == 0:
                 msg.to = msg.from_
@@ -1703,7 +1656,7 @@ def bot(op):
                 sz.like(url[25:58], url[66:], likeType=1001)
                 ar.like(url[25:58], url[66:], likeType=1001)
                 ya.like(url[25:58], url[66:], likeType=1001)
-        if op.type == 26:
+        if op.type == 25:
             msg = op.message
             if msg.contentType == 13:
                if wait["wblack"] == True:
@@ -1786,7 +1739,7 @@ def bot(op):
                     cl.sendText(msg.to,"It can't be used besides the group.")
             
 
-        if op.type == 26:
+        if op.type == 25:
             msg = op.message
             if msg.contentType == 13:
             	if wait["winvite"] == True:
